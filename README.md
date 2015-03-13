@@ -1,5 +1,7 @@
-Command Line App
-================
+Command Line App From The Future
+================================
+
+In the future, AppFolio caters to all your daily needs, including social interaction during lunch hour.
 
 Lunch Roulette is a command line application that always requires a CSV file with staff "features", such as their team and specialty and start date. It is run using the ruby executable and specifying the staff via a CSV file:
 
@@ -12,7 +14,7 @@ Features are things like the team that a staffer is on, or the day they started.
 Along with specifying the various weights and mappings Lunch Roulette users, configurable options include the number of people per group, the number of iterations to perform, and the number of groups to output:
 
 ```
-Usage: ruby lunch_roulette_generator.rb staff.csv [OPTIONS]
+Usage: ruby lib/lunch_roulette.rb data/staff.csv [OPTIONS]
   -n, --min-group-size N           Minimum Lunch Group Size (default 4)
   -i, --iterations I               Number of Iterations (default 1,000)
   -m, --most-varied-sets M         Number of most varied sets to generate (default 1)
@@ -28,8 +30,8 @@ A Dummy Staff
 So that you can run Lunch Roulette out of the box, I've provided a dummy staff (thanks to Namey for the hilariously fake names) dataset in data/staff.csv
 
 
-Configuring Lunch Roulete
-=========================
+Configuring Lunch Roulette
+==========================
 
 At the minimum, Lunch Roulette needs to know how different individual features are from each other. This is achieved by hardcoding a one dimensional mapping in `config/mappings_and_weights.yml`:
 
