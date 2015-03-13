@@ -51,7 +51,9 @@ class LunchRoulette
       CSV.open(file, "w") do |csv|
         csv << %w(user_id name email start_date team lunchable previous_lunches)
         staff.each do |luncher|
-          o = [ luncher.user_id, luncher.name, luncher.email, luncher.start_date, luncher.team, luncher.lunchable, [luncher.previous_lunches, person_lunch_mappings[luncher.user_id]].flatten.join(",") ]
+          luncher.previous_lunches << person_lunch_mappings[luncher.user_id]
+          previous_lunches = luncher.previous_lunches.compact.join(",") # write out as single CSV column
+          o = [ luncher.user_id, luncher.name, luncher.email, luncher.start_date, luncher.team, luncher.lunchable, previous_lunches ]
           puts o.join("\t") if config.options[:verbose_output]
           csv << o
         end

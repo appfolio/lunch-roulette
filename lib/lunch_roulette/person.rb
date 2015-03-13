@@ -13,10 +13,18 @@ class LunchRoulette
       @features['team'] = config.team_mappings[@team].to_i
       @features['floor'] = config.floor_mappings[@team].to_i
       @name = hash['name']
+      init_previous_lunches(hash['previous_lunches'])
+    end
+
+    def init_previous_lunches(previous_lunches)
       @previous_lunches = []
-      if hash['previous_lunches']
-        @previous_lunches = hash['previous_lunches'].split(',').map{|i| i.to_i }
-        config.maxes['lunch_id'] = @previous_lunches.max if @previous_lunches && (@previous_lunches.max > config.maxes['lunch_id'].to_i)
+      if previous_lunches
+        config.maxes['lunch_id'] ||= 0
+        # list of all previously attended lunches; used to prevent repeats
+        @previous_lunches = previous_lunches.split(',').compact.map{|s|s.to_i}
+        if @previous_lunches.any? && (@previous_lunches.max > config.maxes['lunch_id'])
+          config.maxes['lunch_id'] = @previous_lunches.max
+        end
         # Generate previous lunches to person mappings:
         @previous_lunches.map do |previous_lunch|
           config.previous_lunches[previous_lunch] ||= LunchGroup.new
