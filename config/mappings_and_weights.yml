@@ -1,24 +1,24 @@
 ---
   team_mappings:
-    Community Support: 100
-    Community: 90
-    Marketing: 80
-    Communications: 70
-    Operations: 50
-    Product: 40
-    Design: 30
-    Engineering: 20
-    Data: 0
+    Customer Success: 100
+    Human Resources: 90
+    Value Added Services: 85
+    Value Added Services - Acct Mgmt: 80
+    Sales: 70
+    Marketing: 60
+    Finance: 50
+    Client Services: 40
+    Implementation: 30
+    Product Management: 20
+    Software Engineering: 10
+    Software Engineering - Web Ops: 0
   specialty_mappings:
-    Backend: 0
-    Data: 20
-    Frontend: 30
-    Mobile: 50
-    Finance: 100
-    Legal: 120
+    50 Castilian Dr Bottom Floor: 100
+    50 Castilian Dr Top Floor: 50
+    90 Castilian Dr: 0
   weights:
     table: 0.4
     days_here: 0.2
     team: 0.9
     specialty: 0.1
-  min_lunch_group_size: 5
+  min_lunch_group_size: 4
