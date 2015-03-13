@@ -35,13 +35,14 @@ Configuring Lunch Roulette
 
 At the minimum, Lunch Roulette needs to know how different individual features are from each other. This is achieved by hardcoding a one dimensional mapping in `config/mappings_and_weights.yml`.
 
-Lunch Roulette expects all employees to have a team (Customer Success, Human Resources, etc.), and some employees to have a specialty (Data, Legal), etc.
+Lunch Roulette expects all employees to have a team (Customer Success, Human Resources, etc.).
 It is currently assumed that every team only works on a single floor.
 
 Gut Testing Lunch Roulette
 ==========================
 
-If specified, Lunch Roulette will output the top N results and/or the bottom N results. This is useful for testing its efficacy: if the bottom sets don't seem as great as the top sets, then you know its working! This will output 2 maximally varied sets, and two minimally varied sets:
+If specified, Lunch Roulette will output the top N results and/or the bottom N results.
+This is useful for testing its efficacy: if the bottom sets don't seem as great as the top sets, then you know its working! This will output 2 maximally varied sets, and two minimally varied sets:
 
 ```sh
 ruby lib/lunch_roulette.rb -v -m 2 -l 2 data/staff.csv
@@ -49,23 +50,29 @@ ruby lib/lunch_roulette.rb -v -m 2 -l 2 data/staff.csv
 
 If you wanted to get fancy, you could set up a double blind test of these results.
 
-CSV Input
-=========
+CSV Output
+==========
+
+Unless instructed not to, Lunch Roulette will generate a new CSV in data/output each time it is run.
+The filenames are unique and based off MD5 hashes of the people in each group of the set.
+Lunch Roulette will also output a new staff CSV (prefixed staff_ in data/output) complete with new lunch IDs per-staff so that the next time it is run, it will avoid generating similar lunch groups.
+It is recommended that you overwrite data/staff.csv with whatever version you end up going with.
+If used with the verbose option, Lunch Roulette will dump a CSV list of staff with their new lunches so you can paste that back into Google Docs (pasting CSVs with commas doesn't seem to work).
+
+Bamboo HR Input
+===============
 
 If you have access to Bamboo HR, you can download the [Employee Directory](https://appfolio.bamboohr.com/employees/directory.php)
 
 and run this script:
 
 ```sh
-ruby script/bamboo_hr_data.rb
+ruby script/bamboo_hr_data.rb -v data/Employees.html data/santa_barbara_staff.csv
 ```
 
-This will produce an output file `data/new_staff.csv`
+This should take the downloaded Bamboo HR page as input and produce a CSV file `data/santa_barbara_staff.csv`
 
-CSV Output
-==========
-
-Unless instructed not to, Lunch Roulette will generate a new CSV in data/output each time it is run. The filenames are unique and based off MD5 hashes of the people in each group of the set. Lunch Roulette will also output a new staff CSV (prefixed staff_ in data/output) complete with new lunch IDs per-staff so that the next time it is run, it will avoid generating similar lunch groups. It is recommended that you overwrite data/staff.csv with whatever version you end up going with. If used with the verbose option, Lunch Roulette will dump a TSV list of staff with their new lunches so you can paste that back into Google Docs (pasting CSVs with commas doesn't seem to work).
+NOTE: Currently the start date is not available in Bamboo HR, so the current date is used instead.
 
 Learn More & Math
 =================
