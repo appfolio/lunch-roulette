@@ -41,7 +41,7 @@ class LunchRoulette
       if !ARGV[0]
         puts "Must specify staff.csv"
       else
-        puts "Error attempting to load #{staff_csv}"
+        puts "Error attempting to load #{ARGV[0]}"
       end
       puts o
       exit 1
