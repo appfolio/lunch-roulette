@@ -12,13 +12,21 @@
     Product Management: 20
     Software Engineering: 10
     Software Engineering - Web Ops: 0
-  specialty_mappings:
-    50 Castilian Dr Bottom Floor: 100
-    50 Castilian Dr Top Floor: 50
-    90 Castilian Dr: 0
+  floor_mappings:
+    Customer Success: 0
+    Human Resources: 100
+    Value Added Services: 100
+    Value Added Services - Acct Mgmt: 100
+    Sales: 100
+    Marketing: 100
+    Finance: 100
+    Client Services: 0
+    Implementation: 0
+    Product Management: 0
+    Software Engineering: 0
+    Software Engineering - Web Ops: 0
   weights:
-    table: 0.4
+    floor: 0.4
     days_here: 0.2
     team: 0.9
-    specialty: 0.1
   min_lunch_group_size: 4

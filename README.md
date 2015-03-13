@@ -33,35 +33,10 @@ So that you can run Lunch Roulette out of the box, I've provided a dummy staff (
 Configuring Lunch Roulette
 ==========================
 
-At the minimum, Lunch Roulette needs to know how different individual features are from each other. This is achieved by hardcoding a one dimensional mapping in `config/mappings_and_weights.yml`:
+At the minimum, Lunch Roulette needs to know how different individual features are from each other. This is achieved by hardcoding a one dimensional mapping in `config/mappings_and_weights.yml`.
 
-```
-team_mappings:
-  Community Support: 100
-  Community: 90
-  Marketing: 80
-  Communications: 70
-  Operations: 50
-  Product: 40
-  Design: 30
-  Engineering: 20
-  Data: 0
-specialty_mappings:
-  Backend: 0
-  Data: 20
-  Frontend: 30
-  Mobile: 50
-  Finance: 100
-  Legal: 120
-weights:
-  table: 0.6
-  days_here: 0.2
-  team: 0.9
-  specialty: 0.1
-min_lunch_group_size: 4
-```
-
-Lunch Roulette expects all employees to have a team (Community, Design, etc.), and some employees to have a specialty (Data, Legal), etc.
+Lunch Roulette expects all employees to have a team (Customer Success, Human Resources, etc.), and some employees to have a specialty (Data, Legal), etc.
+It is currently assumed that every team only works on a single floor.
 
 Gut Testing Lunch Roulette
 ==========================
@@ -74,6 +49,19 @@ ruby lib/lunch_roulette.rb -v -m 2 -l 2 data/staff.csv
 
 If you wanted to get fancy, you could set up a double blind test of these results.
 
+CSV Input
+=========
+
+If you have access to Bamboo HR, you can download the [Employee Directory](https://appfolio.bamboohr.com/employees/directory.php)
+
+and run this script:
+
+```sh
+ruby script/bamboo_hr_data.rb
+```
+
+This will produce an output file `data/new_staff.csv`
+
 CSV Output
 ==========
 
@@ -83,5 +71,5 @@ Learn More & Math
 =================
 Learn more about Lunch Roulette and the math behind it here:
 
-https://www.kickstarter.com/backing-and-hacking/lunch-roulette
+[Lunch Roulette](https://www.kickstarter.com/backing-and-hacking/lunch-roulette)
 
