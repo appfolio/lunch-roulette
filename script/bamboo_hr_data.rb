@@ -34,7 +34,7 @@ def main
     raise OptionParser::MissingArgument if not ARGV[1]
     new_staff_csv = "#{ARGV[1]}"
   rescue OptionParser::MissingArgument, NameError
-    if !ARGV[0]
+    if !ARGV[1]
       puts "Must specify new_staff.csv"
     else
       puts "Error attempting to load #{ARGV[1]}"
